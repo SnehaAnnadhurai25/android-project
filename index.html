@@ -1,0 +1,1816 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Routine Study Planner | Project Showcase</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #7661e9;
+    --primary-dark: #5e49d0;
+    --primary-light: #eeeaff;
+    --purple: #a18bff;
+    --bg: #faf9ff;
+    --white: #ffffff;
+    --text: #222039;
+    --muted: #77758c;
+    --border: #eae8f3;
+    --green: #42b883;
+    --pink: #f3a5cb;
+    --orange: #ffb86c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Outfit', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.container {
+    width: min(1120px, 90%);
+    margin: auto;
+}
+
+/* NAVIGATION */
+
+nav {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(250, 249, 255, 0.92);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(234, 232, 243, 0.8);
+}
+
+.nav-inner {
+    width: min(1120px, 90%);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #8975f4, #6d54db);
+    border-radius: 13px;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 21px;
+    box-shadow: 0 5px 15px #7661e940;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.nav-button {
+    background: var(--primary);
+    color: white !important;
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 25px;
+    color: var(--text);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 690px;
+    padding: 100px 0 90px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, #e9e3ff 0%, transparent 70%);
+    top: -100px;
+    right: -120px;
+    z-index: -1;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 30px;
+    padding: 9px 15px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.tag span {
+    width: 7px;
+    height: 7px;
+    background: var(--primary);
+    border-radius: 50%;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.1;
+    letter-spacing: -2px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero h1 .highlight {
+    color: var(--primary);
+}
+
+.hero-description {
+    max-width: 480px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 15px 23px;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 8px 20px #7661e930;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.hero-note {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* DASHBOARD MOCKUP */
+
+.dashboard-wrapper {
+    position: relative;
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.dashboard {
+    background: white;
+    border-radius: 25px;
+    padding: 27px;
+    box-shadow: 0 30px 70px #5746a51a;
+    border: 1px solid #eeebf7;
+    position: relative;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.dashboard-header h3 {
+    font-size: 20px;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.date-label {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.dashboard-greeting {
+    font-family: 'Outfit', sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.progress-card {
+    background: linear-gradient(135deg, #7c68ec, #a28dff);
+    border-radius: 18px;
+    padding: 22px;
+    color: white;
+    margin-bottom: 23px;
+}
+
+.progress-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-card small {
+    opacity: 0.8;
+}
+
+.progress-card h2 {
+    font-size: 32px;
+    margin-top: 8px;
+}
+
+.progress-circle {
+    width: 65px;
+    height: 65px;
+    border: 6px solid #ffffff50;
+    border-top-color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #ffffff45;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 65%;
+    background: white;
+    border-radius: 10px;
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.task-header h4 {
+    font-size: 16px;
+}
+
+.task-header span {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0edf7;
+}
+
+.task:last-child {
+    border-bottom: none;
+}
+
+.task-check {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ddd9ec;
+    border-radius: 7px;
+    flex-shrink: 0;
+}
+
+.task-check.done {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-info h5 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.task-info p {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.task-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 7px 10px;
+    border-radius: 8px;
+}
+
+.floating-card {
+    position: absolute;
+    background: white;
+    padding: 15px 18px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px #5746a520;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.float-one {
+    top: -25px;
+    right: -30px;
+}
+
+.float-two {
+    bottom: -25px;
+    left: -35px;
+}
+
+.float-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+}
+
+.float-card-text small {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.float-card-text strong {
+    font-size: 14px;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 55px;
+}
+
+.section-heading .tag {
+    margin-bottom: 15px;
+}
+
+.section-heading h2 {
+    font-size: clamp(30px, 4vw, 45px);
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.features {
+    background: white;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.feature-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px #5746a510;
+    border-color: #d6ccff;
+}
+
+.feature-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ABOUT */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.about-content h2 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.about-list {
+    margin-top: 25px;
+    display: grid;
+    gap: 14px;
+}
+
+.about-list-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.check-icon {
+    background: #e8f8ef;
+    color: var(--green);
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.about-visual {
+    background: linear-gradient(145deg, #eeeaff, #f9eefe);
+    border-radius: 30px;
+    padding: 35px;
+    position: relative;
+}
+
+.about-visual-inner {
+    background: white;
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 15px 35px #5746a510;
+}
+
+.about-visual h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.study-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.study-item:last-child {
+    border-bottom: none;
+}
+
+.study-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+}
+
+.study-item h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.study-item p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* TECHNOLOGY */
+
+.technology {
+    background: white;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+.tech-card {
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: 18px;
+    padding: 25px 15px;
+    transition: 0.3s;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.tech-symbol {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.tech-card h3 {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+.tech-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* PROJECT DETAILS */
+
+.project-details {
+    background: var(--bg);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.detail-card {
+    padding: 28px;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+.detail-card .detail-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.detail-card h3 {
+    margin-bottom: 10px;
+}
+
+.detail-card p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+/* DEMO */
+
+.demo {
+    background: white;
+}
+
+.demo-box {
+    background: #242039;
+    border-radius: 28px;
+    padding: 45px;
+    text-align: center;
+    color: white;
+}
+
+.demo-box h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.demo-box p {
+    color: #c5c0d7;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.video-placeholder {
+    width: 100%;
+    max-width: 780px;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #413666, #302b49);
+    border-radius: 20px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #665b8e;
+}
+
+.play-button {
+    width: 75px;
+    height: 75px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 0 12px #7661e925;
+}
+
+.video-placeholder p {
+    margin: 0;
+    color: #ded9f4;
+    font-size: 14px;
+}
+
+.video-placeholder small {
+    margin-top: 8px;
+    color: #aaa3c6;
+}
+
+/* CONTRIBUTION */
+
+.contribution {
+    background: var(--bg);
+}
+
+.contribution-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 25px;
+    padding: 40px;
+}
+
+.contribution-box h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.contribution-box p {
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.contribution-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.contribution-tags span {
+    background: var(--primary-light);
+    color: var(--primary);
+    padding: 11px 17px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* CTA */
+
+.cta {
+    padding: 80px 0;
+}
+
+.cta-box {
+    background: linear-gradient(135deg, #7661e9, #a28dff);
+    border-radius: 28px;
+    padding: 60px 40px;
+    text-align: center;
+    color: white;
+}
+
+.cta-box h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    color: #f0edff;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.cta-box .btn {
+    background: white;
+    color: var(--primary);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 35px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-text {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 70px;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-note {
+        justify-content: center;
+    }
+
+    .dashboard-wrapper {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+
+    nav {
+        height: 70px;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        display: none;
+        flex-direction: column;
+        padding: 25px;
+        border-bottom: 1px solid var(--border);
+        gap: 22px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .dashboard {
+        padding: 20px;
+    }
+
+    .floating-card {
+        display: none;
+    }
+
+    section {
+        padding: 70px 0;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content h2 {
+        font-size: 32px;
+    }
+
+    .about-visual {
+        padding: 20px;
+    }
+
+    .demo-box {
+        padding: 25px 15px;
+    }
+
+    .demo-box h2 {
+        font-size: 27px;
+    }
+
+    .cta-box {
+        padding: 45px 25px;
+    }
+
+    .cta-box h2 {
+        font-size: 29px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="nav-inner">
+
+        <a href="#home" class="logo">
+            <div class="logo-icon">📚</div>
+            Study Planner
+        </a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+            <a href="#technology">Technology</a>
+            <a href="#demo">Demo</a>
+            <a href="#contact" class="nav-button">Explore Project</a>
+        </div>
+
+        <button class="menu-btn" id="menuBtn">☰</button>
+
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                <span></span>
+                ANDROID APPLICATION PROJECT
+            </div>
+
+            <h1>
+                Your study life,
+                <span class="highlight">organized.</span>
+            </h1>
+
+            <p class="hero-description">
+                A smart daily routine study planner designed to help
+                students organize their schedules, manage tasks,
+                access learning materials and stay focused on their goals.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#features" class="btn btn-primary">
+                    Explore Features →
+                </a>
+
+                <a href="#demo" class="btn btn-secondary">
+                    ▶ Watch Demo
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                <span>📱</span>
+                Android application · Academic project
+            </div>
+
+        </div>
+
+        <!-- APP MOCKUP -->
+
+        <div class="dashboard-wrapper">
+
+            <div class="dashboard">
+
+                <div class="dashboard-header">
+
+                    <h3>My Study Planner</h3>
+
+                    <div class="profile">S</div>
+
+                </div>
+
+                <p class="date-label">MONDAY · YOUR DAILY PLAN</p>
+
+                <div class="dashboard-greeting">
+                    Good morning! ☀️
+                </div>
+
+                <div class="progress-card">
+
+                    <div class="progress-card-top">
+
+                        <div>
+                            <small>Daily Progress</small>
+                            <h2>4 of 6 tasks</h2>
+                        </div>
+
+                        <div class="progress-circle">
+                            65%
+                        </div>
+
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                </div>
+
+                <div class="task-header">
+                    <h4>Today's Schedule</h4>
+                    <span>View all →</span>
+                </div>
+
+                <div class="task">
+
+                    <div class="task-check done">✓</div>
+
+                    <div class="task-info">
+                        <h5>Java Programming</h5>
+                        <p>Practice coding</p>
+                    </div>
+
+                    <div class="task-time">9:00 AM</div>
+
+                </div>
+
+                <div class="task">
+
+                    <div class="task-check"></div>
+
+                    <div class="task-info">
+                        <h5>Database Concepts</h5>
+                        <p>Revise SQL queries</p>
+                    </div>
+
+                    <div class="task-time">11:00 AM</div>
+
+                </div>
+
+                <div class="task">
+
+                    <div class="task-check done">✓</div>
+
+                    <div class="task-info">
+                        <h5>Study Materials</h5>
+                        <p>Read PDF notes</p>
+                    </div>
+
+                    <div class="task-time">2:00 PM</div>
+
+                </div>
+
+                <div class="task">
+
+                    <div class="task-check"></div>
+
+                    <div class="task-info">
+                        <h5>Practice & Review</h5>
+                        <p>Complete daily tasks</p>
+                    </div>
+
+                    <div class="task-time">4:00 PM</div>
+
+                </div>
+
+            </div>
+
+            <div class="floating-card float-one">
+
+                <div class="float-icon" style="background:#e8f8ef">
+                    ✓
+                </div>
+
+                <div class="float-card-text">
+                    <small>Daily productivity</small>
+                    <strong>Keep it up!</strong>
+                </div>
+
+            </div>
+
+            <div class="floating-card float-two">
+
+                <div class="float-icon" style="background:#fff1df">
+                    ⏰
+                </div>
+
+                <div class="float-card-text">
+                    <small>Next reminder</small>
+                    <strong>11:00 AM</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="tag">WHAT IT OFFERS</div>
+
+            <h2>Everything you need<br>to organize your studies</h2>
+
+            <p>
+                Designed to bring your daily study activities,
+                reminders and learning resources together in one place.
+            </p>
+
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#eeeaff">
+                    📅
+                </div>
+
+                <h3>Daily Task Scheduling</h3>
+
+                <p>
+                    Organize your daily academic activities
+                    and create a structured study routine.
+                </p>
+
+            </div>
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#fff1df">
+                    ⏰
+                </div>
+
+                <h3>Reminders & Alarms</h3>
+
+                <p>
+                    Set reminders for study sessions,
+                    important tasks and scheduled activities.
+                </p>
+
+            </div>
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#e5f8f0">
+                    📄
+                </div>
+
+                <h3>PDF Study Materials</h3>
+
+                <p>
+                    Upload and access PDF learning materials
+                    whenever you need them.
+                </p>
+
+            </div>
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#ffeafa">
+                    🎥
+                </div>
+
+                <h3>Learning Videos</h3>
+
+                <p>
+                    Access educational videos and learning
+                    resources to support your study routine.
+                </p>
+
+            </div>
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#e5f2ff">
+                    🎙️
+                </div>
+
+                <h3>Write Summary</h3>
+
+                <p>
+                    Supports write summary or notes functionality
+                    to make understand concepts.
+                </p>
+
+            </div>
+
+            <div class="feature-card reveal">
+
+                <div class="feature-icon" style="background:#fff0e7">
+                    📚
+                </div>
+
+                <h3>Study Management</h3>
+
+                <p>
+                    Keep your learning activities and study
+                    resources organized in one application.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT PROJECT -->
+
+<section class="about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-content reveal">
+
+            <div class="tag">ABOUT THE PROJECT</div>
+
+            <h2>
+                A simple solution
+                for better study habits.
+            </h2>
+
+            <p>
+                The Daily Routine Study Planner is an Android
+                application developed to help students manage
+                their daily academic schedules efficiently.
+            </p>
+
+            <p>
+                The application combines task scheduling,
+                reminders, study materials and educational
+                resources into a single platform, making
+                students' daily learning activities more
+                organized and accessible.
+            </p>
+
+            <div class="about-list">
+
+                <div class="about-list-item">
+                    <span class="check-icon">✓</span>
+                    Student-focused productivity
+                </div>
+
+                <div class="about-list-item">
+                    <span class="check-icon">✓</span>
+                    Simple and user-friendly interface
+                </div>
+
+                <div class="about-list-item">
+                    <span class="check-icon">✓</span>
+                    Integrated learning resources
+                </div>
+
+                <div class="about-list-item">
+                    <span class="check-icon">✓</span>
+                    Daily routine management
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="about-visual reveal">
+
+            <div class="about-visual-inner">
+
+                <h3>Learning Hub ✨</h3>
+
+                <div class="study-item">
+
+                    <div class="study-icon" style="background:#eeeaff">
+                        📘
+                    </div>
+
+                    <div>
+                        <h4>Study Schedule</h4>
+                        <p>Plan your daily learning activities</p>
+                    </div>
+
+                </div>
+
+                <div class="study-item">
+
+                    <div class="study-icon" style="background:#fff1df">
+                        📝
+                    </div>
+
+                    <div>
+                        <h4>Task Management</h4>
+                        <p>Organize your academic tasks</p>
+                    </div>
+
+                </div>
+
+                <div class="study-item">
+
+                    <div class="study-icon" style="background:#e5f8f0">
+                        📄
+                    </div>
+
+                    <div>
+                        <h4>Learning Materials</h4>
+                        <p>Access your study documents</p>
+                    </div>
+
+                </div>
+
+                <div class="study-item">
+
+                    <div class="study-icon" style="background:#ffeafa">
+                        🎬
+                    </div>
+
+                    <div>
+                        <h4>Study Videos</h4>
+                        <p>Explore educational content</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TECHNOLOGY -->
+
+<section class="technology" id="technology">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="tag">TECHNOLOGY STACK</div>
+
+            <h2>Built with Android technologies</h2>
+
+            <p>
+                Technologies and tools used during
+                application development.
+            </p>
+
+        </div>
+
+        <div class="tech-grid">
+
+            <div class="tech-card reveal">
+
+                <div class="tech-symbol">☕</div>
+
+                <h3>Java</h3>
+
+                <p>Application logic</p>
+
+            </div>
+
+            <div class="tech-card reveal">
+
+                <div class="tech-symbol">🤖</div>
+
+                <h3>Android Studio</h3>
+
+                <p>Development IDE</p>
+
+            </div>
+
+            <div class="tech-card reveal">
+
+                <div class="tech-symbol">🎨</div>
+
+                <h3>XML</h3>
+
+                <p>User interface</p>
+
+            </div>
+
+            <div class="tech-card reveal">
+
+                <div class="tech-symbol">🗄️</div>
+
+                <h3>SQLite</h3>
+
+                <p>Database management</p>
+
+            </div>
+
+            <div class="tech-card reveal">
+
+                <div class="tech-symbol">🔗</div>
+
+                <h3>APIs</h3>
+
+                <p>Resource integration</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECT DETAILS -->
+
+<section class="project-details">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div class="tag">PROJECT OVERVIEW</div>
+
+            <h2>Behind the application</h2>
+
+            <p>
+                A closer look at the development
+                and purpose of the project.
+            </p>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div class="detail-card reveal">
+
+                <div class="detail-icon">🎯</div>
+
+                <h3>Project Objective</h3>
+
+                <p>
+                    To develop a mobile application that
+                    helps students organize their daily
+                    study schedules and improve their
+                    learning productivity.
+                </p>
+
+            </div>
+
+            <div class="detail-card reveal">
+
+                <div class="detail-icon">👩‍💻</div>
+
+                <h3>My Role</h3>
+
+                <p>
+                    Worked as Team Lead and Backend Developer,
+                    contributing to application logic,
+                    feature development and integration.
+                </p>
+
+            </div>
+
+            <div class="detail-card reveal">
+
+                <div class="detail-icon">💡</div>
+
+                <h3>Future Enhancements</h3>
+
+                <p>
+                    Integrate Machine Learning for personalized study
+        recommendations and 
+        introduce a gamified to-do list with achievement
+        badges and rewards to motivate students.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DEMO VIDEO -->
+
+<section class="demo" id="demo">
+
+    <div class="container">
+
+        <div class="demo-box reveal">
+
+            <h2>See the project in action</h2>
+
+            <p>
+                Explore the application interface and
+                understand how the Daily Routine Study
+                Planner works.
+            </p>
+
+            <div class="video-placeholder">
+    <video
+        controls
+        width="100%"
+        style="border-radius:20px;"
+    >
+        <source src="assets/demo.mp4" type="video/mp4">
+        Your browser does not support video playback.
+    </video>
+</div>
+
+            <!-- <a href="#" class="btn btn-primary" id="demoButton">
+                ▶ Watch Project Demo
+            </a> -->
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MY CONTRIBUTION -->
+
+<section class="contribution">
+
+    <div class="container">
+
+        <div class="contribution-box reveal">
+
+            <div class="tag">MY CONTRIBUTION</div>
+
+            <h2>My role in the project</h2>
+
+            <p>
+                As the Team Lead and Backend Developer,
+                I contributed to the development of the
+                Daily Routine Study Planner Android
+                application, focusing on backend logic,
+                application features and integration.
+            </p>
+
+            <div class="contribution-tags">
+
+                <span>Team Leadership</span>
+
+                <span>Backend Development</span>
+
+                <span>Java Programming</span>
+
+                <span>SQLite Database</span>
+
+                <span>Feature Implementation</span>
+
+                <span>Android Development</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta" id="contact">
+
+    <div class="container">
+
+        <div class="cta-box reveal">
+
+            <h2>Explore my project</h2>
+
+            <p>
+                Discover my academic project, development
+                journey and the technologies used to
+                build this Android application.
+            </p>
+
+            <a href="https://github.com/SnehaAnnadhurai25/Daily-Routine-Study-Planner-app"
+               target="_blank"
+               class="btn">
+                View GitHub Repository ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div class="logo">
+            <div class="logo-icon">📚</div>
+            Daily Routine Study Planner
+        </div>
+
+        <p class="footer-text">
+            Academic Project · Android Application
+        </p>
+
+        <div class="footer-links">
+
+            <a href="#home">Home</a>
+
+            <a href="#features">Features</a>
+
+            <a href="#about">About</a>
+
+            <a href="#demo">Demo</a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script>
+
+// MOBILE MENU
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    menuBtn.textContent =
+        navLinks.classList.contains("active") ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+    });
+});
+
+// SCROLL ANIMATION
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+// DEMO VIDEO
+
+const demoButton = document.getElementById("demoButton");
+
+demoButton.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    alert("Add your project demo video link to the demoButton in index.html.");
+
+});
+
+</script>
+
+</body>
+</html>
